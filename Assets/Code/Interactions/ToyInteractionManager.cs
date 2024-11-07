@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ToyInteractionManager : MonoBehaviour
 {
-    public Transform robotTorso;
+    public Transform toyTorso;
 
     [SerializeField]
     private List<AttachablePart> attachableParts = new List<AttachablePart>();
@@ -32,12 +32,13 @@ public class ToyInteractionManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                AttachablePart part = hit.transform.GetComponentInParent<AttachablePart>();
+                AttachablePart part = hit.transform.GetComponent<AttachablePart>();
 
                 // Check if part is valid and fetch the root part if available
-                if (part != null && part.rootPart != null && part.rootPart.IsMovable())
+                if (part != null && part.rootPart != null && part.rootPart.IsDetachable())
                 {
                     currentPart = part.rootPart;
+                    currentPart.Detach();
                     isDraggingPart = true;
                     initialDragPosition = currentPart.transform.position;
                     offset = currentPart.transform.position - hit.point;
@@ -54,7 +55,8 @@ public class ToyInteractionManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (!currentPart.IsDetached())
-                currentPart.Detach();
+                return;
+
 
             if (movementPlane.Raycast(ray, out float enter))
             {
@@ -87,11 +89,20 @@ public class ToyInteractionManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                AttachablePart part = hit.transform.GetComponentInParent<AttachablePart>();
+                AttachablePart part = hit.transform.GetComponent<AttachablePart>();
+
+                Debug.Log($"Found AttachablePart: {part}");
+
+                if (part != null)
+                    Debug.Log("Part is not null");
+
+                if (part.rootPart != null)
+                    Debug.Log("root part is not null");
 
                 // Access root part and check if it is movable for outlining
-                if (part != null && part.rootPart != null && part.rootPart.IsMovable())
+                if (part != null && part.rootPart != null && part.rootPart.IsDetachable())
                 {
+                    Debug.Log($"Rootpart valid: {part}");
                     OutlineHandler newOutline = part.rootPart.GetComponent<OutlineHandler>();
 
                     // Only update outline if the part is different

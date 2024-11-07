@@ -334,7 +334,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &152025003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAttachPoint: {fileID: 1639840873}
-  rootPart: {fileID: 213141465}
+  rootPart: {fileID: 0}
   OnAttach:
     m_PersistentCalls:
       m_Calls:
@@ -576,18 +576,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 956823837}
           m_ObjectArgumentAssemblyTypeName: Outline, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -632,19 +620,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isMovable: 1
+  isDetachable: 1
 --- !u!65 &213141466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1030,7 +1006,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &282866692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,7 +1071,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &353165764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,7 +1150,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &378906560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,7 +1194,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &432691760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1238,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!65 &502821161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1284,22 +1260,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.017849375, y: 0.018300917, z: 0.024818556}
   m_Center: {x: -0.0033351923, y: -0.00031202153, z: 0.012418631}
---- !u!114 &502821162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502821156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742da3328b3439442a5c1c2ad8f70b9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineComponents:
-  - {fileID: 1475965363}
-  - {fileID: 1420290584}
-  - {fileID: 502821163}
 --- !u!114 &502821163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,7 +2099,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &929966595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,7 +2143,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!65 &956823835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2205,22 +2165,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.018182077, y: 0.01886705, z: 0.023572203}
   m_Center: {x: 0.0039944267, y: -0.00078243256, z: 0.011361277}
---- !u!114 &956823836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956823830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742da3328b3439442a5c1c2ad8f70b9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineComponents:
-  - {fileID: 213141468}
-  - {fileID: 1730727498}
-  - {fileID: 956823837}
 --- !u!114 &956823837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,7 +2469,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &1407912963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2734,7 +2678,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!65 &1420290582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2756,22 +2700,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030986542, y: 0.033100933, z: 0.05544468}
   m_Center: {x: -0.00009452974, y: -0.0006303277, z: 0.018314028}
---- !u!114 &1420290583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420290577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742da3328b3439442a5c1c2ad8f70b9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineComponents:
-  - {fileID: 1475965363}
-  - {fileID: 1420290584}
-  - {fileID: 502821163}
 --- !u!114 &1420290584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2936,7 +2864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAttachPoint: {fileID: 2125931802}
-  rootPart: {fileID: 1475965360}
+  rootPart: {fileID: 0}
   OnAttach:
     m_PersistentCalls:
       m_Calls:
@@ -3015,7 +2943,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isMovable: 1
+  isDetachable: 1
 --- !u!65 &1475965361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3117,7 +3045,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &1591534147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3215,7 +3143,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 1
+  isDetachable: 1
 --- !u!114 &1599882923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,7 +3399,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05842346, y: 0.035445116, z: -0.0034299898}
-  m_LocalScale: {x: 0.017910495, y: 0.017910495, z: 0.017910495}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 551948030}
@@ -4029,9 +3957,6 @@ PrefabInstance:
       addedObject: {fileID: 1730727496}
     - targetCorrespondingSourceObject: {fileID: 8313914560102798367, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1730727497}
-    - targetCorrespondingSourceObject: {fileID: 8313914560102798367, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1730727498}
     - targetCorrespondingSourceObject: {fileID: -2180475303555262147, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
@@ -4039,9 +3964,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2180475303555262147, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
       addedObject: {fileID: 956823835}
-    - targetCorrespondingSourceObject: {fileID: -2180475303555262147, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 956823836}
     - targetCorrespondingSourceObject: {fileID: -2180475303555262147, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
       addedObject: {fileID: 956823837}
@@ -4065,9 +3987,6 @@ PrefabInstance:
       addedObject: {fileID: 1420290582}
     - targetCorrespondingSourceObject: {fileID: 3797430458511594911, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1420290583}
-    - targetCorrespondingSourceObject: {fileID: 3797430458511594911, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1420290584}
     - targetCorrespondingSourceObject: {fileID: 5168603693849106051, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
@@ -4075,9 +3994,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5168603693849106051, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
       addedObject: {fileID: 502821161}
-    - targetCorrespondingSourceObject: {fileID: 5168603693849106051, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 502821162}
     - targetCorrespondingSourceObject: {fileID: 5168603693849106051, guid: ec3f87b634b91504b946a058ea4a3862, type: 3}
       insertIndex: -1
       addedObject: {fileID: 502821163}
@@ -4313,7 +4229,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!65 &1730727496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4335,22 +4251,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.028230384, y: 0.0347046, z: 0.0559516}
   m_Center: {x: -0.0006087489, y: 0.00033661115, z: 0.018808901}
---- !u!114 &1730727497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730727491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742da3328b3439442a5c1c2ad8f70b9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineComponents:
-  - {fileID: 213141468}
-  - {fileID: 956823837}
-  - {fileID: 1730727498}
 --- !u!114 &1730727498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4488,7 +4388,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &1761134900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4718,7 +4618,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &1883496823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4781,8 +4681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d125cc44fdf894b88da1ea63aa177c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotTorso: {fileID: 195829759}
-  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  toyTorso: {fileID: 0}
   attachableParts:
   - {fileID: 213141465}
   - {fileID: 1730727495}
@@ -5042,7 +4941,7 @@ MonoBehaviour:
   OnDetach:
     m_PersistentCalls:
       m_Calls: []
-  isMovable: 0
+  isDetachable: 0
 --- !u!114 &2080157814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5092,7 +4991,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0583011, y: 0.035469778, z: -0.003430028}
-  m_LocalScale: {x: 0.017910495, y: 0.017910495, z: 0.017910495}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 551948030}

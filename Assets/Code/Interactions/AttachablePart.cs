@@ -4,14 +4,16 @@ using UnityEngine.Events;
 public class AttachablePart : MonoBehaviour
 {
     public Transform defaultAttachPoint; // The point where this part should reattach
-    public AttachablePart rootPart; // Reference to the root part of the robot
+    public AttachablePart rootPart; // Reference to the root part of the toy
 
     public UnityEvent OnAttach;
     public UnityEvent OnDetach;
 
     private bool isDetached = false;
+    private Transform originalParent;
 
-    [SerializeField] private bool isMovable = true; // Allow the part to be grabbed initially
+    [SerializeField] private bool isDetachable = false; // Allow the part to be grabbed initially
+    private bool isMovable = true; 
 
     private Quaternion originalLocalRotation;
     private Vector3 originalLocalPosition;
@@ -20,6 +22,8 @@ public class AttachablePart : MonoBehaviour
     {
         originalLocalRotation = transform.localRotation;
         originalLocalPosition = transform.localPosition;
+
+        originalParent = transform.parent;
 
         // If no rootPart is set, assume this is the root part
         if (rootPart == null)
@@ -34,19 +38,19 @@ public class AttachablePart : MonoBehaviour
         isDetached = true;
         isMovable = true;
         OnDetach.Invoke();
-        Debug.Log("Detached");
     }
 
     public void Attach()
     {
         if (defaultAttachPoint != null)
         {
-            rootPart.transform.SetParent(defaultAttachPoint);
+            rootPart.transform.SetParent(originalParent);
             rootPart.transform.localPosition = originalLocalPosition;
             rootPart.transform.localRotation = originalLocalRotation;
         }
         isDetached = false;
-        isMovable = true;
+        isMovable = false;
+
 
         OnAttach.Invoke();
     }
@@ -60,6 +64,12 @@ public class AttachablePart : MonoBehaviour
     {
         return isMovable;
     }
+
+    public bool IsDetachable()
+    {
+        return isDetachable;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
