@@ -93,12 +93,6 @@ public class ToyInteractionManager : MonoBehaviour
 
                 Debug.Log($"Found AttachablePart: {part}");
 
-                if (part != null)
-                    Debug.Log("Part is not null");
-
-                if (part.rootPart != null)
-                    Debug.Log("root part is not null");
-
                 // Access root part and check if it is movable for outlining
                 if (part != null && part.rootPart != null && part.rootPart.IsDetachable())
                 {

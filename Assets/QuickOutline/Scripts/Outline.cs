@@ -53,6 +53,11 @@ public class Outline : MonoBehaviour {
     public List<Vector3> data;
   }
 
+  [Header("Optional")]
+  [SerializeField, Tooltip("If true, only the MeshRenderer attached to this object will be outlined")]
+  private bool useOnlyAttachedRenderer = false;
+
+  [Space]
   [SerializeField]
   private Mode outlineMode;
 
@@ -80,39 +85,46 @@ public class Outline : MonoBehaviour {
 
   private bool needsUpdate;
 
-  void Awake() {
+    void Awake()
+    {
+        // Cache renderers based on the `useOnlyAttachedRenderer` flag
+        if (useOnlyAttachedRenderer)
+        {
+            renderers = new Renderer[] { GetComponent<Renderer>() };
+        }
+        else
+        {
+            renderers = GetComponentsInChildren<Renderer>();
+        }
 
-    // Cache renderers
-    renderers = GetComponentsInChildren<Renderer>();
+        // Instantiate outline materials
+        outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
+        outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
+        outlineMaskMaterial.name = "OutlineMask (Instance)";
+        outlineFillMaterial.name = "OutlineFill (Instance)";
 
-    // Instantiate outline materials
-    outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
-    outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
+        // Retrieve or generate smooth normals
+        LoadSmoothNormals();
 
-    outlineMaskMaterial.name = "OutlineMask (Instance)";
-    outlineFillMaterial.name = "OutlineFill (Instance)";
-
-    // Retrieve or generate smooth normals
-    LoadSmoothNormals();
-
-    // Apply material properties immediately
-    needsUpdate = true;
-  }
-
-  void OnEnable() {
-    foreach (var renderer in renderers) {
-
-      // Append outline shaders
-      var materials = renderer.sharedMaterials.ToList();
-
-      materials.Add(outlineMaskMaterial);
-      materials.Add(outlineFillMaterial);
-
-      renderer.materials = materials.ToArray();
+        // Apply material properties immediately
+        needsUpdate = true;
     }
-  }
 
-  void OnValidate() {
+    void OnEnable()
+    {
+        foreach (var renderer in renderers)
+        {
+            if (renderer == null) continue;
+
+            // Append outline shaders
+            var materials = renderer.sharedMaterials.ToList();
+            materials.Add(outlineMaskMaterial);
+            materials.Add(outlineFillMaterial);
+            renderer.materials = materials.ToArray();
+        }
+    }
+
+    void OnValidate() {
 
     // Update material properties
     needsUpdate = true;
@@ -137,20 +149,21 @@ public class Outline : MonoBehaviour {
     }
   }
 
-  void OnDisable() {
-    foreach (var renderer in renderers) {
+    void OnDisable()
+    {
+        foreach (var renderer in renderers)
+        {
+            if (renderer == null) continue;
 
-      // Remove outline shaders
-      var materials = renderer.sharedMaterials.ToList();
-
-      materials.Remove(outlineMaskMaterial);
-      materials.Remove(outlineFillMaterial);
-
-      renderer.materials = materials.ToArray();
+            // Remove outline shaders
+            var materials = renderer.sharedMaterials.ToList();
+            materials.Remove(outlineMaskMaterial);
+            materials.Remove(outlineFillMaterial);
+            renderer.materials = materials.ToArray();
+        }
     }
-  }
 
-  void OnDestroy() {
+    void OnDestroy() {
 
     // Destroy material instances
     Destroy(outlineMaskMaterial);
