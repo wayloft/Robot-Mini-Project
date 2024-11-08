@@ -2,16 +2,39 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Target Settings")]
+    [Tooltip("The target the camera will follow and look at.")]
     public Transform target;
+
+    [Header("Rotation Settings")]
+    [Tooltip("The speed at which the camera rotates around the target when using the mouse.")]
     public float rotationSpeed = 2f;
+
+    [Tooltip("The speed at which the camera rotates around the target when using the keyboard.")]
     public float keyboardRotationSpeed = 50f;
-    public float zoomSpeed = 2f;
-    public float keyboardZoomSpeed = 5f;
-    public float minDistance = 2f;
-    public float maxDistance = 20f;
-    public float smoothTime = 0.1f;
+
+    [Tooltip("The amount of zoom effect applied when the camera is rotating.")]
     public float rotationZoomFactor = 0.5f;
+
+    [Tooltip("The speed at which the camera returns to its original zoom level after rotating.")]
     public float zoomReturnSpeed = 2f;
+
+    [Header("Zoom Settings")]
+    [Tooltip("The speed at which the camera zooms in and out when using the mouse scroll wheel.")]
+    public float zoomSpeed = 2f;
+
+    [Tooltip("The speed at which the camera zooms in and out when using the keyboard.")]
+    public float keyboardZoomSpeed = 5f;
+
+    [Tooltip("The minimum allowed distance between the camera and the target.")]
+    public float minDistance = 2f;
+
+    [Tooltip("The maximum allowed distance between the camera and the target.")]
+    public float maxDistance = 20f;
+
+    [Header("Smoothing Settings")]
+    [Tooltip("The time it takes for the camera to smoothly transition to its target position.")]
+    public float smoothTime = 0.1f;
 
     private Vector3 offset;
     private Vector3 currentVelocity = Vector3.zero;

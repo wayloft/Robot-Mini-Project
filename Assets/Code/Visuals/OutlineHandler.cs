@@ -6,6 +6,8 @@ public class OutlineHandler : MonoBehaviour
     [SerializeField]
     private List<Outline> outlineComponents = new List<Outline>();
 
+    public List<Outline> GetOutlineList => outlineComponents;
+
     private bool isOutlined = false;
 
     public void EnableOutline()

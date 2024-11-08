@@ -3,43 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToyUIManager : MonoBehaviour
+namespace ToyViewer
 {
-    [SerializeField] Text statusText;
-
-    private void OnEnable()
+    public class ToyUIManager : MonoBehaviour
     {
-        if (AttachedPartManager.Instance != null)
-            AttachedPartManager.Instance.PartStatusUpdate += UpdateStatusText;
-    }
+        [SerializeField] Text statusText;
 
-    private void OnDisable()
-    {
-        if (AttachedPartManager.Instance != null)
-            AttachedPartManager.Instance.PartStatusUpdate -= UpdateStatusText;
-    }
-
-    public void UpdateStatusText()
-    {
-        if(AttachedPartManager.Instance.AreAnyPartsDetached())
+        private void OnEnable()
         {
-            UpdateStatusDetach();
+            if (AttachedPartManager.Instance != null)
+                AttachedPartManager.Instance.PartStatusUpdate += UpdateStatusText;
         }
-        else
+
+        private void OnDisable()
         {
-            UpdateStatusAttach();
+            if (AttachedPartManager.Instance != null)
+                AttachedPartManager.Instance.PartStatusUpdate -= UpdateStatusText;
+        }
+
+        public void UpdateStatusText()
+        {
+            if (AttachedPartManager.Instance.AreAnyPartsDetached())
+            {
+                UpdateStatusDetach();
+            }
+            else
+            {
+                UpdateStatusAttach();
+            }
+        }
+
+        private void UpdateStatusDetach()
+        {
+            statusText.text = "Detached";
+            statusText.color = Color.red;
+        }
+
+        private void UpdateStatusAttach()
+        {
+            statusText.text = "Attached";
+            statusText.color = Color.green;
         }
     }
 
-    private void UpdateStatusDetach()
-    {
-        statusText.text = "Detached";
-        statusText.color = Color.red;
-    }
-
-    private void UpdateStatusAttach()
-    {
-        statusText.text = "Attached";
-        statusText.color = Color.green;
-    }
 }

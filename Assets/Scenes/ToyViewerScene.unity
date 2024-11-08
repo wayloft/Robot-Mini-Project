@@ -269,54 +269,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1963459331}
-  - {fileID: 757649006}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &757649005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 757649006}
-  - component: {fileID: 757649007}
-  m_Layer: 0
-  m_Name: SceneReloader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &757649006
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757649005}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 693381612}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &757649007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757649005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6231ebf53d0c11a4eb89f830b2fb4d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toyPrefab: {fileID: 0}
 --- !u!1 &797596413
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 797596414}
   m_Layer: 0
-  m_Name: StatusText
+  m_Name: RobotStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,16 +413,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf9af76a739c14448b68be11db21bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1156304083}
   rotationSpeed: 2
   keyboardRotationSpeed: 50
+  rotationZoomFactor: 0.1
+  zoomReturnSpeed: 2
   zoomSpeed: 2
   keyboardZoomSpeed: 1
   minDistance: 0.35
   maxDistance: 0.8
   smoothTime: 0.1
-  rotationZoomFactor: 0.1
-  zoomReturnSpeed: 2
+--- !u!4 &1156304083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2985143034762502828, guid: 0ae624b4a0901564a9e78f6725d80beb, type: 3}
+  m_PrefabInstance: {fileID: 5736324533898606096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1475965360 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1191612699444094852, guid: 0ae624b4a0901564a9e78f6725d80beb, type: 3}
@@ -683,7 +642,7 @@ GameObject:
   - component: {fileID: 1963459333}
   - component: {fileID: 1963459334}
   m_Layer: 0
-  m_Name: RobotManager
+  m_Name: ToyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,7 +823,7 @@ GameObject:
   - component: {fileID: 2122392287}
   - component: {fileID: 2122392286}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: ScreenSpaceCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
