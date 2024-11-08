@@ -6,13 +6,15 @@ public class AttachablePart : MonoBehaviour
     public Transform defaultAttachPoint; // The point where this part should reattach
     public AttachablePart rootPart; // Reference to the root part of the toy
 
+    [SerializeField] 
+    private bool isDetachable = false; // Allow the part to be grabbed initially
+
     public UnityEvent OnAttach;
     public UnityEvent OnDetach;
 
     private bool isDetached = false;
     private Transform originalParent;
 
-    [SerializeField] private bool isDetachable = false; // Allow the part to be grabbed initially
     private bool isMovable = true; 
 
     private Quaternion originalLocalRotation;
