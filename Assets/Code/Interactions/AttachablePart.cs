@@ -39,7 +39,7 @@ namespace ToyViewer
             originalLocalRotation = transform.localRotation;
             originalLocalPosition = transform.localPosition;
 
-            originalParent = transform.parent;
+            originalParent = transform.parent != null ? transform.parent : null;
 
             // If no rootPart is set, assume this is the root part
             if (rootPart == null)
@@ -69,13 +69,13 @@ namespace ToyViewer
             }
 
             isMovable = true;
-            OnDetach.Invoke();
-            OnPartDetach.Invoke(this);
+            OnDetach?.Invoke();
+            OnPartDetach?.Invoke(this);
         }
 
         public void Attach()
         {
-            if (defaultAttachPoint != null)
+            if (defaultAttachPoint != null && rootPart != null)
             {
                 rootPart.transform.SetParent(originalParent);
                 rootPart.transform.localPosition = originalLocalPosition;
@@ -84,7 +84,7 @@ namespace ToyViewer
             isDetached = false;
             isMovable = false;
 
-            OnAttach.Invoke();
+            OnAttach?.Invoke();
             OnPartAttach?.Invoke(this);
         }
 

@@ -31,13 +31,30 @@ public class AttachablePartTests
     [Test]
     public void Detach_PartDetachesCorrectly()
     {
+        Assert.IsNotNull(attachablePart, "AttachablePart component is null at the start of IsDetachable_ReturnsCorrectValue.");
 
+        attachablePart.rootPart = attachablePart;
+        attachablePart.Detach();
+
+        Assert.IsTrue(attachablePart.IsDetached(), "Part should be marked as detached.");
+        Assert.IsTrue(attachablePart.IsMovable(), "Part should be marked as movable.");
+        Assert.IsTrue(detachEventCalled, "Detach event should be called.");
     }
 
     [Test]
     public void Attach_PartAttachesCorrectly()
     {
+        Assert.IsNotNull(attachablePart, "AttachablePart component is null at the start of Attach_PartAttachesCorrectly.");
 
+        GameObject attachPointObject = new GameObject("AttachPoint");
+        attachablePart.defaultAttachPoint = attachPointObject.transform;
+
+        attachablePart.Detach();
+        attachablePart.Attach();
+
+        Assert.IsFalse(attachablePart.IsDetached(), "Part should not be marked as detached.");
+        Assert.IsFalse(attachablePart.IsMovable(), "Part should not be movable after attaching.");
+        Assert.IsTrue(attachEventCalled, "Attach event should be called.");
     }
 
     [Test]
