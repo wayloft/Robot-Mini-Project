@@ -3,8 +3,15 @@ using UnityEngine.Events;
 
 public class AttachablePart : MonoBehaviour
 {
+    public delegate void PartUpdate(AttachablePart part);
+
+    public event PartUpdate OnPartDetach;
+    public event PartUpdate OnPartAttach;
+
     public Transform defaultAttachPoint; // The point where this part should reattach
     public AttachablePart rootPart; // Reference to the root part of the toy
+    [SerializeField] bool isRootTorso = false;
+    public bool IsRootTorso => isRootTorso;
 
     [SerializeField] 
     private bool isDetachable = false; // Allow the part to be grabbed initially
@@ -34,11 +41,28 @@ public class AttachablePart : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (AttachedPartManager.Instance != null)
+            AttachedPartManager.Instance.RegisterPart(this);
+    }
+
+    private void OnDisable()
+    {
+        if(AttachedPartManager.Instance != null)
+            AttachedPartManager.Instance.UnRegisterPart(this);
+    }
+
     public void Detach()
     {
-        transform.SetParent(null);
-        isDetached = true;
+        if(!isRootTorso)
+        {
+            transform.SetParent(null);
+            isDetached = true;
+        }
+
         isMovable = true;
+        OnPartDetach.Invoke(this);
         OnDetach.Invoke();
     }
 
@@ -53,7 +77,7 @@ public class AttachablePart : MonoBehaviour
         isDetached = false;
         isMovable = false;
 
-
+        OnPartAttach?.Invoke(this);
         OnAttach.Invoke();
     }
 

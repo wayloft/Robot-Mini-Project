@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     private Vector3 offset;
     private Vector3 currentVelocity = Vector3.zero;
     private float rotationZoom = 0f;
+    private bool cameraLocked = false;
 
     void Start()
     {
@@ -36,9 +37,14 @@ public class CameraController : MonoBehaviour
         transform.LookAt(target);
     }
 
+    public void LockCameraMovement(bool value)
+    {
+        cameraLocked = value;
+    }
+
     void HandleRotation()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && !cameraLocked)
         {
             float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
             Quaternion rotation = Quaternion.Euler(0, mouseX, 0);
@@ -51,19 +57,25 @@ public class CameraController : MonoBehaviour
         float horizontalRotation = 0f;
         bool isRotating = false;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if(!cameraLocked)
         {
-            horizontalRotation = keyboardRotationSpeed * Time.deltaTime;
-            isRotating = true;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                horizontalRotation = keyboardRotationSpeed * Time.deltaTime;
+                isRotating = true;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                horizontalRotation = -keyboardRotationSpeed * Time.deltaTime;
+                isRotating = true;
+            }
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            horizontalRotation = -keyboardRotationSpeed * Time.deltaTime;
-            isRotating = true;
-        }
+
 
         Quaternion rotation = Quaternion.Euler(0, horizontalRotation, 0);
         offset = rotation * offset;
+
+
 
         if (isRotating)
         {
